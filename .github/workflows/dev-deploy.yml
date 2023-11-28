@@ -1,0 +1,21 @@
+name: Run Report
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: test-report
+
+env:
+  # Name of Azure Web APP
+  APP_NAME: app
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Report
+        run: sleep ${{ vars.VAR_SLEEPDURATION }} && echo ${{ vars.VAR_TESTMESSAGE }}

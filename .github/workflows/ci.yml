@@ -1,0 +1,16 @@
+name: CI - Build and Test
+
+on: [pull_request]
+
+env:
+  DOTNET_VERSION: '6.0.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build
+        run: dotnet build -p:BuildNumber=$GITHUB_RUN_NUMBER -p:Branch=$GITHUB_BASE_REF -p:Commit=$GITHUB_SHA
