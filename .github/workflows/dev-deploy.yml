@@ -5,6 +5,7 @@ on:
     inputs:
       distinct_id:
         description: "Unique identifier for the run"
+        default: "Test Report Id"
 
 concurrency:
   group: test-report
