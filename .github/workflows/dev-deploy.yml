@@ -19,3 +19,6 @@ jobs:
 
       - name: Run Report
         run: sleep ${{ vars.VAR_SLEEPDURATION }} && echo ${{ vars.VAR_TESTMESSAGE }}
+
+      - name: Publish Report
+        run: sleep ${{ vars.VAR_SLEEPDURATION }} && echo ${{ vars.VAR_TESTMESSAGE }}
