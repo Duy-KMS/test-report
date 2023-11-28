@@ -2,6 +2,9 @@ name: Run Report
 
 on:
   workflow_dispatch:
+    inputs:
+      distinct_id:
+        description: "Unique identifier for the run"
 
 concurrency:
   group: test-report
@@ -11,14 +14,17 @@ env:
   APP_NAME: app
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
+      - name: echo distinct ID ${{ github.event.inputs.distinct_id }}
+        run: echo ${{ github.event.inputs.distinct_id }}
+
       - name: Run Report
-        run: sleep ${{ vars.VAR_SLEEPDURATION }} && echo ${{ vars.VAR_TESTMESSAGE }}
+        run: sleep ${{ vars.VAR_SLEEPDURATION }}
 
       - name: Publish Report
-        run: sleep ${{ vars.VAR_SLEEPDURATION }} && echo ${{ vars.VAR_TESTMESSAGE }}
+        run: sleep ${{ vars.VAR_SLEEPDURATION }}
